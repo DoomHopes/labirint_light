@@ -168,6 +168,42 @@ class _MazeControlsToolbarState extends ConsumerState<MazeControlsToolbar> {
                   : const Icon(Icons.code, size: 18),
               label: const Text('Скачать SVG'),
             ),
+            const SizedBox(width: 8.0),
+
+            // Кнопка сохранения .litematic (Litematica)
+            FilledButton.tonalIcon(
+              onPressed: isExporting
+                  ? null
+                  : () {
+                      ref.read(mazeNotifierProvider.notifier).exportLitematic();
+                    },
+              icon: isExporting
+                  ? const SizedBox(
+                      width: 16,
+                      height: 16,
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    )
+                  : const Icon(Icons.layers, size: 18),
+              label: const Text('Скачать .litematic'),
+            ),
+            const SizedBox(width: 8.0),
+
+            // Кнопка сохранения .schem (WorldEdit)
+            FilledButton.tonalIcon(
+              onPressed: isExporting
+                  ? null
+                  : () {
+                      ref.read(mazeNotifierProvider.notifier).exportSchematic();
+                    },
+              icon: isExporting
+                  ? const SizedBox(
+                      width: 16,
+                      height: 16,
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    )
+                  : const Icon(Icons.grid_view, size: 18),
+              label: const Text('Скачать .schem'),
+            ),
           ],
         ),
       ),
